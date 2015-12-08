@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <set>
 #include <string>
 #include <vector>
 #include "stdlib.h"
@@ -13,8 +14,8 @@ private:
     pair<double, double> coordinates;
     vector<pair<int, double> >neighbors;
 
-    double g, h, f;
-    int from;
+    double g, h;
+    int fromCity;
 
 public:
     City(int number, string name, pair<double, double> coordinates, vector<pair<int, double> > neighbors){
@@ -24,8 +25,7 @@ public:
         this->neighbors = neighbors;
         g = 0;
         h = 0;
-        f = 0;
-        from = 0;
+        fromCity = 0;
     }
 
     int getNumber() {
@@ -42,6 +42,34 @@ public:
 
     vector<pair<int, double> > getNeighbors() {
         return neighbors;
+    }
+
+    void setG(double g) {
+        this->g = g;
+    }
+
+    double getG() {
+        return g;
+    }
+
+    void setH(double h) {
+        this->h = h;
+    }
+
+    double getH() {
+        return h;
+    }
+
+    double getF() {
+        return f = g + h;
+    }
+
+    void setFromCity(int fromCity) {
+        this->fromCity = fromCity;
+    }
+
+    int getFromCity() {
+        return fromCity;
     }
 
 };
@@ -106,6 +134,7 @@ int getCityNumber(string cityName, vector<City> &cities) {
 
 
 vector<int> aStar(int startCityNumber, int finishCityNumber, vector<City> &cities) {
+
     vector<int> result;
 
     return result;
